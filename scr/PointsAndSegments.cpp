@@ -9,6 +9,7 @@ public:
 	int start;
 	int end;
 
+
 	Otrezok() :start(0), end(0){}
 	Otrezok(int s, int e) :start(s), end(e){}
 
