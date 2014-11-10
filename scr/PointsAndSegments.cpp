@@ -6,7 +6,6 @@ class Otrezok{
 
 public:
 
-
 	int start;
 	int end;
 
