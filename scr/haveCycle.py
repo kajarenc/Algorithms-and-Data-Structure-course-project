@@ -1,5 +1,4 @@
 from Graphs.OrientedGraph import OrientedGraph
-
 vertexEdgesInput = input()
 vertexEdgesInputTokens = vertexEdgesInput.split()
 vertexCount = int(vertexEdgesInputTokens[0])
@@ -17,6 +16,5 @@ for edges in range(0, edgesCount):
     to = int(edgesInputTokens[1])
     myGraph.addEdge(fr, to)
 myGraph.ExploreGraph()
-for i in reversed(myGraph.TopologoSortReverse):
-    print(i)
+print(int(myGraph.haveCycle))
 
