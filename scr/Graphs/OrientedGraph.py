@@ -1,6 +1,6 @@
 __author__ = 'Java'
 from Graphs.Vertex import Vertex
-
+from queue import Queue
 
 class OrientedGraph:
     def __init__(self):
@@ -9,6 +9,7 @@ class OrientedGraph:
         self.numVertices = 0
         self.haveCycle = False
         self.TopologoSortReverse = []
+        self.que = Queue()
 
     def addVertexById(self, id):
         self.numVertices += 1
@@ -21,9 +22,6 @@ class OrientedGraph:
             return self.vertexList[n]
         else:
             return None
-
-    def __contains__(self, item):
-        return item in self.vertexList
 
     def addEdge(self, f, t, cost=0):
         if f not in self.vertexList.keys():
@@ -48,7 +46,19 @@ class OrientedGraph:
         self.timer+=1
         vertex.finishExploreTime = self.timer
         self.TopologoSortReverse.append(vertex.getId())
-
+    def BFS(self,vertexId):
+        vertex = self.getVertexByID(vertexId)
+        self.que.put(vertex)
+        vertex.dist = 0
+        vertex.prev = None
+        while(not self.que.empty()):
+            currentVertex = self.que.get()
+            for neighborId in currentVertex.connectedTo:
+                neighbor = self.getVertexByID(neighborId)
+                if(neighbor.dist == 1000000):
+                    self.que.put(neighbor)
+                    neighbor.dist = currentVertex.dist + 1
+                    neighbor.prev = currentVertex
 
     def ExploreGraph(self):
         for itm in self.getVerticesIDs():
