@@ -5,11 +5,11 @@ class Vertex:
         self.isExplored = False
         self.startExploreTime = -1
         self.finishExploreTime = -1
-        self.dist = 1000000
+        self.dist = 10000000000000000000
         self.prev = None
 
-    def addNeighbor(self, nbr, weight=0):
-        self.connectedTo[nbr.id] = weight
+    def addNeighbor(self, nbr, cost=0):
+        self.connectedTo[nbr.id] = cost
 
     def getOutEdges(self):
         return self.connectedTo.keys()
